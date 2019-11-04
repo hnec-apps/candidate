@@ -18,6 +18,8 @@ if (config.use_env_variable) {
     config
   );
 }
+console.log("--------");
+console.log(basename);
 
 fs.readdirSync(__dirname)
   .filter(file => {
