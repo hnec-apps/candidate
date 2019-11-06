@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const user_mgr = require("../controller/user").user_mgr;
 
 router.post("/user/add", async (req, res) => {
   console.log(req.body);

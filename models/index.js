@@ -18,8 +18,6 @@ if (config.use_env_variable) {
     config
   );
 }
-console.log("--------");
-console.log(basename);
 
 fs.readdirSync(__dirname)
   .filter(file => {
@@ -37,7 +35,7 @@ Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
     console.log(db[modelName]);
     db[modelName].associate(db);
-    db[modelName].sync();
+    // db[modelName].sync();
   }
 });
 

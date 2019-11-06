@@ -5,8 +5,12 @@ const bodyParser = require("body-parser");
 const MongoDBStore = require("connect-mongodb-session")(session);
 require("dotenv").config();
 const cors = require("cors");
+const models = require("./models");
 const app = express();
+//---------- routes--------------------
 const user = require("./routes/user");
+const election = require("./routes/election");
+//---------- routes--------------------
 
 var store = new MongoDBStore({
   uri: process.env.mongoURI,
@@ -35,11 +39,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/user", user);
+app.use("/election", election);
 
 if (["production", "ci"].includes(process.env.NODE_ENV)) {
 }
 
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`Listening on port`, PORT);
+models.sequelize.sync().then(function() {
+  app.listen(PORT, () => {
+    console.log(`Listening on port`, PORT);
+  });
 });
+

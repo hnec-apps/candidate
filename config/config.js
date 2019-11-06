@@ -7,6 +7,7 @@ module.exports = {
     host: process.env.host,
     dialect: process.env.dialect,
     operatorsAliases: false,
+    sync: {force:false},
     pool: {
       max: 5,
       min: 0,

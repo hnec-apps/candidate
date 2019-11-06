@@ -4,9 +4,10 @@ module.exports = (sequelize, DataTypes) => {
     "Election",
     {
       name: DataTypes.STRING(150),
+      type: DataTypes.STRING(50),
       startDate: DataTypes.DATE,
       endDate: DataTypes.DATE,
-      status: { type: DataTypes.INTEGER(1), defaultValue: 0 }
+      status: { type: DataTypes.INTEGER(1), defaultValue: 1 }
     },
     {}
   );
